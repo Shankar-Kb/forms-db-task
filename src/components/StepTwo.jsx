@@ -11,12 +11,18 @@ const StepTwo = () => {
     const [pinCode, setPinCode] = useState("");
 
     useEffect(() => {
-      setAddressLineOne(window.localStorage.getItem('addressLineOne'));
-      setAddressLineTwo(window.localStorage.getItem('addressLineTwo'));
-      setLandmark(window.localStorage.getItem('landmark'));
-      setCountry(window.localStorage.getItem('country'));
-      setState(window.localStorage.getItem('state'));
-      setPinCode(window.localStorage.getItem('pinCode'));
+      const localAddressLineOne = window.localStorage.getItem('addressLineOne') || "";
+      setAddressLineOne(localAddressLineOne);
+      const localAddressLineTwo = window.localStorage.getItem('addressLineTwo') || "";
+      setAddressLineTwo(localAddressLineTwo);
+      const localLandmark = window.localStorage.getItem('landmark') || "";
+      setLandmark(localLandmark);
+      const localCountry = window.localStorage.getItem('country') || "";
+      setCountry(localCountry);
+      const localState = window.localStorage.getItem('state') || "";
+      setState(localState);
+      const pinCode = window.localStorage.getItem('pinCode') || 0;
+      setPinCode(pinCode);
     }, []);
   
     useEffect(() => {

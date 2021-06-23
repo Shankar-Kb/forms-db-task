@@ -20,10 +20,14 @@ const StepThree = () => {
       }, [bankName, accountNumber, branchName, ifscCode])
 
     useEffect(() => {
-      setBankName(window.localStorage.getItem('bankName'));
-      setAccountNumber(window.localStorage.getItem('accountNumber'));
-      setBranchName(window.localStorage.getItem('branchName'));
-      setIfscCode(window.localStorage.getItem('ifscCode'));
+      const localBankName = window.localStorage.getItem('bankName') || "";
+      setBankName(localBankName);
+      const localAccountNumber = window.localStorage.getItem('accountNumber') || 0;
+      setAccountNumber(localAccountNumber);
+      const localBranchName = window.localStorage.getItem('branchName') || "";
+      setBranchName(localBranchName);
+      const localIfscCode = window.localStorage.getItem('ifscCode') || "";
+      setIfscCode(localIfscCode);
 
     }, []);
 

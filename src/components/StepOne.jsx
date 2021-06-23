@@ -19,10 +19,14 @@ const StepOne = () => {
       }, [name, email])
 
       useEffect(() => {
-        setName(window.localStorage.getItem('name'));
-        setEmail(window.localStorage.getItem('email'));
-        setGender(window.localStorage.getItem('gender'));
-        setDateOfBirth(window.localStorage.getItem('dateOfBirth'));
+        const localName = window.localStorage.getItem('name') || "";
+        setName(localName);
+        const localEmail = window.localStorage.getItem('email') || 0;
+        setEmail(localEmail);
+        const localGender = window.localStorage.getItem('gender') || 0;
+        setGender(localGender);
+        const localDateOfBirth = window.localStorage.getItem('dateOfBirth') || "2021-06-23";
+        setDateOfBirth(localDateOfBirth);
       }, []);
     
       useEffect(() => {
@@ -65,23 +69,27 @@ const StepOne = () => {
           placeholder="Enter your email"
         />
         <br />
-
-        <label htmlFor="gender" className="input-group mt-2">
+         
+        <div className="input-group mt-2">
+        <label htmlFor="gender" className="input-group-text mt-2">
         Select your Gender :{" "}
         </label>
         <select
-          className="custom-select"
+          className="form-select"
           value={gender}
           onChange={(e) => {
             const selectedGender = e.target.value;
             setGender(selectedGender);
           }}
           >
+          <option selected>Choose...</option>
           <option value="male">Male</option>
           <option value="female">Female</option>
           <option value="other">Other</option>
         </ select>
+        </div> 
         <br />
+
 
         <label htmlFor="DOB" className="input-group mt-2">
         Select your DOB :{" "}
